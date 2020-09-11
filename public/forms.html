@@ -13,7 +13,7 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
 
 
 </head>
@@ -24,11 +24,11 @@
       <h2>Simple PASTE-BIN</h2>
       <h6>(by wuasousky)</h6>
     </header>
-    <form id="myForm" action="index.html">
+    <form  action="/hola" method="POST">
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">comment</i>
-          <input id="icon_prefix" type="text" class="validate">
+          <input id="icon_prefix" type="text" name="name" class="validate">
           <label for="icon_prefix">Nombre/Descripción</label>
         </div>
       </div>
@@ -38,14 +38,13 @@
           <div class="row">
             <div class="input-field col s11">
               <i class="material-icons prefix">code</i>
-              <textarea id="textarea1" class="materialize-textarea" class="code"
+              <textarea id="textarea1" name="textarea" class="materialize-textarea" class="code"
                 style="background-color:#F2F3F4;padding-left: 1.5%;padding-top: 1.5%;"></textarea>
               <label for="textarea1">Code</label>
             </div>
-          </div>
-        </form>
+          </div>        
       </div>
-      <button class="btn waves-effect waves-light" id="myButton" type="submit" name="action" >Submit
+      <button class="btn waves-effect waves-light" type="submit" value="Submit">Submit
         <i class="material-icons right">send</i>
       </button>
     </form>
