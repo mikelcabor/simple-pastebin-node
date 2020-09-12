@@ -1,9 +1,12 @@
 
 //Submit del boton en forms.html
-
 console.log(window.location.hostname);
 const path = window.location.hostname + "/leer";
+console.log(path);
 var pageElement;
+
+
+
 
 function Get(yourUrl){
     var Httpreq = new XMLHttpRequest(); // a new request
@@ -12,7 +15,7 @@ function Get(yourUrl){
     return Httpreq.responseText;          
 } 
 
-var json_obj = JSON.parse(Get('http://localhost:3000/leer'));
+var json_obj = JSON.parse(Get(path));
 
 window.onload = function (){
     for (var i = json_obj.length - 1; i >= 0; i--) {
@@ -36,27 +39,7 @@ window.onload = function (){
          const container = document.getElementById("container");
          container.appendChild(div);
     }
-    /*json_obj.forEach(element => {
-        console.log(element);   
-        const div = document.createElement("div");
-        div.className = "container";
-        div.innerHTML = "<div class='row'>"+
-            "<div class='col m12'>"+
-                "<div class='card darken-1'>" +
-                    "<div class='card-content'>" +
-                        "<span class='card-title'>"+ element.name +"</span>" +
-                        "<pre>" + element.textarea +"</pre>" +
-                        "</div>" +
-                        "<div class='card-action'>"+
-                        "<a href='#'>Copiar codigo</a>" +
-                        "</div>" +
-                    "</div>" +
-                "</div>";
-        
-         const container = document.getElementById("container");
-         container.appendChild(div);
-              
-    });*/
+    
 }
 
 
