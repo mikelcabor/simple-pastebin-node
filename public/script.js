@@ -1,7 +1,7 @@
 
 //Submit del boton en forms.html
 console.log(window.location.hostname);
-const path = window.location.hostname + "/leer";
+const path = "https://" + window.location.hostname + "/leer";
 console.log(path);
 var pageElement;
 
