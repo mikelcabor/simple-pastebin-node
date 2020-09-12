@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//route to user
+//route to index
 router.use('/index', (req, res) => {
     console.log("index");
     res.sendFile('public/index.html', { root: __dirname });
@@ -25,18 +25,17 @@ router.use('/index', (req, res) => {
 
 app.use('/', router);
 
-
+//im not using a router here because all is working as intended but is not the best solution
 app.get('/forms', (req, res) => {
     console.log("forms");
     res.sendFile('public/forms.html', { root: __dirname });
 });
 
-
+//POST method that read the actual json file and add the new code on /forms
 app.post('/addCode', function (req, res) {
-    console.log('post');        
-
+    //console.log('post');        
     newCode.push(req.body);
-    console.log(newCode);    
+    //console.log(newCode);    
     
     fs.readFile('code.json', (err, data) =>{
         if (err){
@@ -47,7 +46,7 @@ app.post('/addCode', function (req, res) {
         console.log(json);
         fs.writeFile('code.json', json, err => { if (err) console.log(err) }); // write it back 
     }});
-
+    //back to the main page
     res.redirect('/');
   });
 
@@ -56,16 +55,9 @@ app.post('/addCode', function (req, res) {
     fs.readFile('code.json', 'utf-8', (err, data) => {
         if (err) {
             throw err;
-        }
-    
-        // parse JSON object
-        //var readCode = JSON.parse(data.toString());
-        
-        // print JSON object
-        
+        }  
+
         res.end(data);
-        
-        
     });
   });
  
