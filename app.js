@@ -4,7 +4,9 @@ const port = process.env.PORT || 3000
 const router = express.Router();
 const bodyParser = require('body-parser');
 var fs = require('fs');
-const { callbackify } = require('util');
+const { json } = require('body-parser');
+var currentCode = [];
+var newCode = [];
 
 
 app.listen(port, () => console.log(`listening at http://localhost:${port}`));
@@ -24,15 +26,46 @@ app.get('/forms', (req, res) => {
 
 
 app.post('/hola', function (req, res) {
-    console.log('post');    
-    console.log(req.body);
+    console.log('post');        
+
+    newCode.push(req.body);
+    console.log(newCode);    
+    
+    fs.readFile('code.json', (err, data) =>{
+        if (err){
+            console.log(err);
+        } else {
+        
+        var json = JSON.stringify(newCode); //convert it back to json
+        console.log(json);
+        fs.writeFile('code.json', json); // write it back 
+    }});
+
+
+
+
+    /*fs.readFile('code.json', (err, data) => {
+        if (err) {
+            throw err;
+        }    
+        // parse JSON object
+        const readCode = JSON.parse(data.toString());
+    
+        // print JSON object
+        console.log(readCode);
+    });
+    let rawdata = fs.readFileSync('code.json');
+    let code = JSON.parse(rawdata);
+    code.push(...anchors);
+
+    console.log(student);
     const data = JSON.stringify(req.body);
-    fs.writeFile('code.json', data, (err) => {
+    fs.writeFile('code.json', student, data, (err) => {
         if (err) {
             throw err;
         }
         console.log("JSON data is saved.");
-    });
+    });*/
     res.redirect('/');
   });
 
@@ -45,10 +78,10 @@ app.post('/hola', function (req, res) {
         }
     
         // parse JSON object
-        const user = JSON.parse(data.toString());
+        const readCode = JSON.parse(data.toString());
     
         // print JSON object
-        console.log(user.textarea);
+        console.log(readCode);
     });
   });
  
