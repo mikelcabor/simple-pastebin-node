@@ -1,11 +1,17 @@
 
 //Submit del boton en forms.html
 console.log(window.location.hostname);
-const path = "https://" + window.location.hostname + "/leer";
+const path = knowURL();
 console.log(path);
 var pageElement;
 
-
+function knowURL(){
+    if (window.location.hostname=='localhost') {
+        return "http://localhost:3000";
+    } else {
+        return "https://" + window.location.hostname + "/leer";
+    }
+}
 
 
 function Get(yourUrl){
