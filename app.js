@@ -38,7 +38,7 @@ app.post('/hola', function (req, res) {
         
         var json = JSON.stringify(newCode); //convert it back to json
         console.log(json);
-        fs.writeFile('code.json', json); // write it back 
+        fs.writeFile('code.json', json, err => { if (err) console.log(err) }); // write it back 
     }});
 
 
