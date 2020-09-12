@@ -7,3 +7,9 @@ footer{padding-top: 8%;}
 span{font-weight: normal;}
 
 pre{background-color: whitesmoke; padding-left: 1%;}
+
+.container{
+    width: 80%;
+    max-width:initial;
+    
+}
